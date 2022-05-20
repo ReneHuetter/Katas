@@ -3,14 +3,15 @@
  * Datum: 20.05.2022
  * Version: 01.0
  */
-public class Catas {
+public class Katas {
 
     public static void main(String[] args) {
         sterne(0);
         int [] zahlen = {3,-4,1,2,1,-3,8,10,-5};
         array(zahlen);
         balken(zahlen);
-
+        String text = "Hallo ich bin ein Testtext Morgen wird es regnen Auf zum Atom Hallo auf zum Testtext ";
+        textzerlegung(text);
     }
 
     /***
@@ -28,8 +29,8 @@ public class Catas {
      * @param array gibt mir an wie viele Sterne gezeichneten
      */
     public static void array(int[]array){
-        for (int i = 0; i < array.length; i++) {
-            sterne(array[i]);
+        for (int j : array) {
+            sterne(j);
             System.out.println();
         }
     }
@@ -45,18 +46,18 @@ public class Catas {
      */
     public static void balken(int[] array) {
         int maxnegativPositv = maxnegativ(array)*-1;
-        for (int i = 0; i < array.length; i++){
-            if (array[i] >= 0){
-                for (int j = 0; j < maxnegativPositv; j++){
+        for (int k : array) {
+            if (k >= 0) {
+                for (int j = 0; j < maxnegativPositv; j++) {
                     System.out.print(" ");
                 }
                 System.out.print("|");
-                sterne(array[i]);
+                sterne(k);
                 System.out.println();
             } else {
-                int inhaltArrayPositv = array[i]*-1;
+                int inhaltArrayPositv = k * -1;
                 int anzahlSp = maxnegativPositv - inhaltArrayPositv;
-                for (int x = 0; x < anzahlSp; x++){
+                for (int x = 0; x < anzahlSp; x++) {
                     System.out.print(" ");
                 }
                 sterne(inhaltArrayPositv);
@@ -73,13 +74,22 @@ public class Catas {
      */
     public static int maxnegativ(int[] number){
         int negativ = 0;
-        for (int i = 0; i < number.length; i++) {
-            if (number[i] < 0) {
-                negativ = number[i];
-            } else if (number[i] < negativ) {
-                negativ = number[i];
+        for (int j : number) {
+            if (j < 0) {
+                negativ = j;
             }
         }
         return negativ;
+    }
+    public static String[] textzerlegung(String text) {
+        String[] textteile = text.split(" ");
+        for (String s : textteile) {
+            System.out.println(s);
+        }
+        return textteile;
+    }
+
+    public static void wortzähler(){
+
     }
 }
